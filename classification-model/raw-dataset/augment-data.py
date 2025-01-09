@@ -12,7 +12,7 @@ categories = ['cats', 'dogs']
 # Define individual augmentation transforms
 augmentation_transforms = [
     transforms.RandomHorizontalFlip(),
-    transforms.RandomRotation(60),  # Max offset of 60 degrees
+    transforms.RandomRotation(30),  # Max offset of 20 degrees
     transforms.ColorJitter(brightness=(0.3, 1.0)),  # Brightness minimum is 0.3
     transforms.ColorJitter(contrast=0.5),
     transforms.ColorJitter(saturation=0.5),
@@ -26,6 +26,7 @@ def augment_and_save_images(source_dir, augmented_dir, num_augmentations=5):
         if os.path.isfile(img_path):
             # Read the image
             img = Image.open(img_path).convert('L')  # Convert to grayscale
+            
             
             for i in range(num_augmentations):
                 # Randomly select a subset of transformations
